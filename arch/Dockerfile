@@ -1,11 +1,12 @@
-FROM base/archlinux
+FROM daaku/arch
 MAINTAINER Naitik Shah "n@daaku.org"
 
 # build tools
 RUN pacman --sync --refresh --sysupgrade --noconfirm
 RUN pacman --sync --noconfirm \
     docker \
-    haveged
+    haveged \
+    tar
 
 # minimal system to allow pacman to function
 RUN mkdir -p /arch/var/lib/pacman /arch/var/cache/pacman/pkg
