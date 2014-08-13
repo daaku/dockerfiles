@@ -15,4 +15,4 @@ WORKDIR /data
 
 USER redis
 EXPOSE 6379
-CMD ["redis-server", "/etc/redis.conf"]
+CMD ["/usr/bin/redis-server", "/etc/redis.conf"]
