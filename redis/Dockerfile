@@ -8,9 +8,11 @@ RUN \
     mkdir /data && \
     chown redis:redis /data
 
+ADD redis.conf /etc/redis.conf
+
 VOLUME /data
 WORKDIR /data
 
 USER redis
 EXPOSE 6379
-CMD ["redis-server"]
+CMD ["redis-server", "/etc/redis.conf"]
