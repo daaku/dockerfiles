@@ -5,9 +5,10 @@ RUN \
     pacman --noconfirm --sync --refresh --sysupgrade && \
     pacman --noconfirm --sync --asdeps grep shadow systemd && \
     pacman --noconfirm --sync redis && \
-    pacman --noconfirm --remove --recursive --unneeded grep shadow systemd
+    pacman --noconfirm --remove --recursive --unneeded grep shadow systemd && \
+    mkdir /data && \
+    chown redis:redis /data
 
-RUN mkdir /data && chown redis:redis /data
 VOLUME /data
 WORKDIR /data
 
