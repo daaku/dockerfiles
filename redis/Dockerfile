@@ -2,7 +2,6 @@ FROM daaku/arch
 MAINTAINER Naitik Shah "n@daaku.org"
 
 RUN \
-    pacman --noconfirm --sync --refresh --sysupgrade && \
     pacman --noconfirm --sync --asdeps grep shadow systemd && \
     pacman --noconfirm --sync redis && \
     pacman --noconfirm --remove --recursive --unneeded grep shadow systemd && \
