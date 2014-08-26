@@ -22,7 +22,7 @@ RUN haveged -w 1024 ; \
     true
 
 # pacman servers
-RUN echo "Server = https://mirrors.kernel.org/archlinux/\$repo/os/\$arch" > /arch/etc/pacman.d/mirrorlist
+RUN echo "Server = http://mirrors.kernel.org/archlinux/\$repo/os/\$arch" > /arch/etc/pacman.d/mirrorlist
 
 # create new base image
 CMD tar \
