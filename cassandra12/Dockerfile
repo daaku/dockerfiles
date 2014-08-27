@@ -7,7 +7,11 @@ RUN \
       shadow \
       tar && \
     groupadd cassandra && \
-    useradd cassandra -g cassandra && \
+    useradd \
+      --gid cassandra \
+      --home-dir /home/cassandra \
+      --create-home \
+      cassandra && \
     mkdir \
       /etc/cassandra \
       /opt/cassandra \
@@ -28,6 +32,7 @@ RUN \
 ADD cassandra.yaml /etc/cassandra/cassandra.yaml
 ADD log4j.properties /etc/cassandra/log4j.properties
 
+VOLUME /var/lib/cassandra
 USER cassandra
 EXPOSE 9160
 CMD [ \
