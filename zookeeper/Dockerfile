@@ -7,7 +7,11 @@ RUN \
       shadow \
       tar && \
     groupadd zookeeper && \
-    useradd zookeeper -g zookeeper && \
+    useradd \
+      --gid zookeeper \
+      --home-dir /home/zookeeper \
+      --create-home \
+      zookeeper && \
     mkdir \
       /etc/zookeeper \
       /opt/zookeeper \
@@ -28,6 +32,7 @@ RUN \
 ADD zoo.cfg /etc/zookeeper/zoo.cfg
 ADD log4j.properties /etc/zookeeper/log4j.properties
 
+VOLUME /var/lib/zookeeper
 USER zookeeper
 EXPOSE 2181
 CMD [ \
