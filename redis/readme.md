@@ -12,7 +12,7 @@ chown -R 999:999 /var/lib/redis
 Then to start a container named `redis`:
 
 ```sh
-/usr/bin/docker run --name=redis --volume=/var/lib/redis:/data daaku/redis
+docker run --name=redis --volume=/var/lib/redis:/data daaku/redis
 ```
 
 To connect to it with the `redis-cli`:
