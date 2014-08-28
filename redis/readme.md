@@ -1,18 +1,12 @@
 redis
 =====
 
-Provides a redis docker image. The redis user/group have the id `999`, which is
-what you'll need your volume to be owned by.
+Provides a redis docker image.
+
+To start:
 
 ```sh
-mkdir -p /var/lib/redis
-chown -R 999:999 /var/lib/redis
-```
-
-Then to start a container named `redis`:
-
-```sh
-docker run --name=redis --volume=/var/lib/redis:/data daaku/redis
+docker run --name=redis daaku/redis
 ```
 
 To connect to it with the `redis-cli`:
