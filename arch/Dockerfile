@@ -11,8 +11,10 @@ RUN pacman --sync --noconfirm \
 # minimal system to allow pacman to function
 RUN mkdir -p /arch/var/lib/pacman /arch/var/cache/pacman/pkg
 RUN pacman --sync --refresh --noconfirm --root /arch \
+    filesystem \
+    gzip \
     pacman \
-    filesystem
+    tar
 
 # initialize the keyring
 RUN haveged -w 1024 ; \

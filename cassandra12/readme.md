@@ -16,6 +16,7 @@ docker run -it --link cassandra:cassandra --rm daaku/cassandra12 \
   sh -c '
     exec \
     /opt/java/bin/java \
+    -Duser.home=/tmp \
     -Dlog4j.configuration=file:/etc/cassandra/log4j.properties \
     -cp /opt/cassandra/lib/*:/etc/cassandra \
     org.apache.cassandra.cli.CliMain \

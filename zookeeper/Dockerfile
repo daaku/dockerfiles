@@ -2,38 +2,20 @@ FROM daaku/jre8-oracle
 MAINTAINER Naitik Shah "n@daaku.org"
 
 RUN \
-    pacman --noconfirm --sync \
-      gzip \
-      shadow \
-      tar && \
-    groupadd zookeeper && \
-    useradd \
-      --gid zookeeper \
-      --home-dir /home/zookeeper \
-      --create-home \
-      zookeeper && \
     mkdir \
       /etc/zookeeper \
       /opt/zookeeper \
-      /var/cache/zookeeper \
       /var/lib/zookeeper && \
-    chown zookeeper:zookeeper \
-      /etc/zookeeper \
-      /var/cache/zookeeper \
+    chown 42005 \
       /var/lib/zookeeper && \
     curl http://www.dsgnwrld.com/am/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz | \
-      tar --extract --gunzip --strip-components 1 --directory /opt/zookeeper && \
-    pacman --noconfirm --remove --cascade --recursive \
-      gzip \
-      shadow \
-      tar && \
-    echo -e "y\ny\n" | pacman --sync --clean --clean
+      tar --extract --gunzip --strip-components 1 --directory /opt/zookeeper
 
 ADD zoo.cfg /etc/zookeeper/zoo.cfg
 ADD log4j.properties /etc/zookeeper/log4j.properties
 
 VOLUME /var/lib/zookeeper
-USER zookeeper
+USER 42005
 EXPOSE 2181
 CMD [ \
   "/opt/java/bin/java", \
