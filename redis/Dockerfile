@@ -2,9 +2,9 @@ FROM daaku/arch
 MAINTAINER Naitik Shah "n@daaku.org"
 
 RUN \
-    pacman --noconfirm --sync --noscriptlet redis && \
     mkdir -p /var/lib/redis && \
-    chown 42006 /var/lib/redis
+    chown 42006 /var/lib/redis && \
+    pacman --noconfirm --sync --noscriptlet redis
 
 ADD redis.conf /etc/redis.conf
 

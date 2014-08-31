@@ -6,8 +6,7 @@ RUN \
       /etc/zookeeper \
       /opt/zookeeper \
       /var/lib/zookeeper && \
-    chown 42005 \
-      /var/lib/zookeeper && \
+    chown 42005 /var/lib/zookeeper && \
     curl http://www.dsgnwrld.com/am/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz | \
       tar --extract --gunzip --strip-components 1 --directory /opt/zookeeper
 
