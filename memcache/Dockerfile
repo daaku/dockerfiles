@@ -1,7 +1,8 @@
 FROM daaku/arch
 MAINTAINER Naitik Shah "n@daaku.org"
 
-RUN pacman --noconfirm --sync memcached
+RUN pacman --noconfirm --sync memcached && \
+    echo -e "y\ny\n" | pacman --sync --clean --clean
 
 USER 42002
 EXPOSE 11211
