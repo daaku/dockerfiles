@@ -7,7 +7,7 @@ RUN \
       /opt/cassandra \
       /var/lib/cassandra && \
     chown 42001 /var/lib/cassandra && \
-    curl http://mirrors.ibiblio.org/apache/cassandra/1.2.18/apache-cassandra-1.2.18-bin.tar.gz | \
+    curl http://mirrors.ibiblio.org/apache/cassandra/1.2.19/apache-cassandra-1.2.19-bin.tar.gz | \
       tar --extract --gunzip --strip-components 1 --directory /opt/cassandra
 
 ADD cassandra.yaml /etc/cassandra/cassandra.yaml
