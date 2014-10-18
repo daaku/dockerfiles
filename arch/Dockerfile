@@ -5,7 +5,6 @@ MAINTAINER Naitik Shah "n@daaku.org"
 RUN pacman --sync --refresh --sysupgrade --noconfirm
 RUN pacman --sync --noconfirm \
     docker \
-    haveged \
     tar
 
 # minimal system to allow pacman to function
@@ -16,11 +15,10 @@ RUN pacman --sync --refresh --noconfirm --root /arch \
     pacman \
     tar
 
-# initialize the keyring
-RUN haveged -w 1024 ; \
+# initialize the keyring, use urandom since we never seem to have enough entropy
+RUN /bin/rm -f /dev/random && ln -s /dev/urandom /dev/random ; \
     pacman-key --gpgdir=/arch/etc/pacman.d/gnupg --init ; \
     pacman-key --gpgdir=/arch/etc/pacman.d/gnupg --populate archlinux ; \
-    pkill haveged ; \
     true
 
 # pacman servers
