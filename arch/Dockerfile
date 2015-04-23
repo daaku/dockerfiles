@@ -1,8 +1,21 @@
 FROM daaku/arch
 MAINTAINER Naitik Shah "n@daaku.org"
 
+# disable sig checking
+RUN pacman --sync --refresh --noconfirm
+RUN pacman --sync --noconfirm sed grep
+
+# disable sig checking
+RUN sed -i'' -e 's/SigLevel.*/SigLevel = Never/' /etc/pacman.conf
+
+# upgrade the pacman we'll use to bootstap our image
+RUN pacman --sync --sysupgrade --noconfirm
+
+# possibly need to upgrade the DB format if pacman has seen a major upgrade
+# since we created the last container.
+RUN pacman-db-upgrade
+
 # build tools
-RUN pacman --sync --refresh --sysupgrade --noconfirm
 RUN pacman --sync --noconfirm \
     docker \
     tar
