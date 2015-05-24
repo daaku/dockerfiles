@@ -74,5 +74,5 @@ RUN useradd \
 RUN echo "naitik:$(tr -dc A-Za-z0-9_ < /dev/urandom | head -c16)" | chpasswd
 VOLUME /home/naitik
 
-EXPOSE 22 60001-60005/udp
+EXPOSE 22 61001-61005/udp
 CMD ["/usr/sbin/sshd", "-D"]
