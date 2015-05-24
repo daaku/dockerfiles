@@ -71,6 +71,7 @@ RUN useradd \
       --shell /usr/bin/zsh \
       --uid 1666 \
       naitik
+RUN echo "naitik:$(tr -dc A-Za-z0-9_ < /dev/urandom | head -c16)" | chpasswd
 VOLUME /home/naitik
 
 EXPOSE 22 60001-60005/udp
