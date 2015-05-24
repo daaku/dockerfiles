@@ -1,0 +1,8 @@
+AuthorizedKeysFile .ssh/authorized_keys
+ChallengeResponseAuthentication no
+PasswordAuthentication no
+UsePAM no
+Subsystem sftp /usr/lib/ssh/sftp-server
+AcceptEnv LANG LC_*
+TCPKeepAlive yes
+UsePrivilegeSeparation no

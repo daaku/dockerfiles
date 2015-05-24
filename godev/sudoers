@@ -1,0 +1,2 @@
+Defaults !tty_tickets
+naitik ALL = NOPASSWD: ALL
