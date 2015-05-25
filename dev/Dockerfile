@@ -58,7 +58,7 @@ RUN export GOPATH=/tmp/gopath && \
 ADD locale.gen /etc/locale.gen
 ADD locale.conf /etc/locale.conf
 ADD sshd_config /etc/ssh/sshd_config
-ADD sudoers /etc/sudoers.d/godev
+ADD sudoers /etc/sudoers.d/naitik
 
 RUN locale-gen
 RUN ssh-keygen -A
