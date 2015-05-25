@@ -4,7 +4,7 @@ dev
 My personal development container.
 
 ```sh
-docker build -t daaku/dev
+docker build -t daaku/dev .
 mkdir -p /home/naitik
 chown 1666:1666 /home/naitik
 docker run \

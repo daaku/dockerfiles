@@ -1,6 +1,6 @@
 FROM daaku/arch
 
-ENV LANG=en_US.UTF-8
+ENV LANG=en_US.UTF-8 \
     LC_COLLATE=C
 
 RUN pacman --noconfirm --sync \
