@@ -35,7 +35,7 @@ RUN /bin/rm -f /dev/random && ln -s /dev/urandom /dev/random ; \
     true
 
 # pacman servers
-RUN echo "Server = http://mirrors.kernel.org/archlinux/\$repo/os/\$arch" > /arch/etc/pacman.d/mirrorlist
+RUN echo "Server = http://mirrors.advancedhosters.com/archlinux/\$repo/os/\$arch" > /arch/etc/pacman.d/mirrorlist
 
 # create new base image
 CMD tar \
