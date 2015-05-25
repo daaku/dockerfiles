@@ -1,6 +1,7 @@
 FROM daaku/arch
 
-ENV LANG en_US.UTF-8
+ENV LANG=en_US.UTF-8
+    LC_COLLATE=C
 
 RUN pacman --noconfirm --sync \
       autoconf \
@@ -56,7 +57,6 @@ RUN export GOPATH=/tmp/gopath && \
     rm -rf $GOPATH
 
 ADD locale.gen /etc/locale.gen
-ADD locale.conf /etc/locale.conf
 ADD sshd_config /etc/ssh/sshd_config
 ADD sudoers /etc/sudoers.d/naitik
 
