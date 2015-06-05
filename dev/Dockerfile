@@ -6,6 +6,7 @@ ENV LANG=en_US.UTF-8 \
 RUN pacman --noconfirm --sync \
       autoconf \
       automake \
+      boost \
       bzr \
       cmake \
       colordiff \
