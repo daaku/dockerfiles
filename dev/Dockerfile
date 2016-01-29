@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:15.10
 
 ADD apt.conf /etc/apt/apt.conf.d/dev.conf
 RUN echo "debconf debconf/frontend select noninteractive\n \
@@ -36,14 +36,14 @@ RUN apt-get install \
       libtool \
       make \
       man-db \
-      mercurial \
       openssh-client \
       openssh-server \
       patch \
       rsync \
       sudo \
       vim \
-      zip
+      zip \
+      zsh
 
 # install go, doc, vet, golint binaries
 #RUN export GOPATH=/tmp/gopath && \
@@ -73,6 +73,5 @@ RUN echo "naitik:$(tr -dc A-Za-z0-9_ < /dev/urandom | head -c16)" | chpasswd
 VOLUME /home/naitik
 
 ADD sshd_config /etc/ssh/sshd_config
-RUN ssh-keygen -A
 EXPOSE 22 61001/udp
 CMD ["/usr/sbin/sshd", "-D"]
