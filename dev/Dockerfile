@@ -1,69 +1,66 @@
-FROM daaku/arch
+FROM ubuntu:14.04
 
+ADD apt.conf /etc/apt/apt.conf.d/dev.conf
+RUN echo "debconf debconf/frontend select noninteractive\n \
+          debconf debconf/priority select critical" | debconf-set-selections
+
+RUN apt-get update
+RUN apt-get install \
+      apt-transport-https \
+      ca-certificates \
+      curl \
+      locales
+
+ADD sources.list /etc/apt/sources.list.d/dev.list
+RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D # docker key
+RUN apt-get update
+
+# locale
+ADD locale.gen /etc/locale.gen
+RUN locale-gen en_US.UTF-8
+RUN update-locale LANG=en_US.UTF-8
 ENV LANG=en_US.UTF-8 \
     LC_COLLATE=C
 
-RUN pacman --noconfirm --sync \
+RUN apt-get install \
       autoconf \
       automake \
-      boost \
-      bzr \
+      build-essential \
       cmake \
-      colordiff \
-      diffutils \
-      docker \
-      fakeroot \
-      file \
+      docker-engine \
+      g++ \
+      gawk \
       gcc \
       git \
-      go \
-      grep \
-      htop \
-      iotop \
-      iputils \
+      less \
       libtool \
-      lsof \
-      m4 \
       make \
       man-db \
-      man-pages \
       mercurial \
-      mosh \
-      openssh \
+      openssh-client \
+      openssh-server \
       patch \
-      pkg-config \
-      procps-ng \
       rsync \
-      scons \
-      strace \
       sudo \
-      tcpdump \
-      time \
-      tmux \
       vim \
-      wget \
-      which \
-      whois \
-      zip \
-      zsh && \
-  echo -e "y\ny\n" | pacman --sync --clean --clean
+      zip
 
-# install go doc, vet, lint binaries
-RUN export GOPATH=/tmp/gopath && \
-    go get \
-      golang.org/x/tools/cmd/godoc \
-      golang.org/x/tools/cmd/vet \
-      github.com/golang/lint/golint && \
-    mv $GOPATH/bin/golint /usr/bin/golint && \
-    rm -rf $GOPATH
+# install go, doc, vet, golint binaries
+#RUN export GOPATH=/tmp/gopath && \
+    #mkdir $GOPATH && \
+    #cd $GOPATH && \
+    #curl https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz | \
+      #tar --extract --gunzip --directory $GOPATH && \
+    #$GOPATH/godeb install 1.5.3 && \
+    #go get \
+      #golang.org/x/tools/cmd/godoc \
+      #golang.org/x/tools/cmd/vet \
+      #github.com/golang/lint/golint && \
+    #mv $GOPATH/bin/golint /usr/bin/golint && \
+    #rm -rf $GOPATH
 
-ADD locale.gen /etc/locale.gen
-ADD sshd_config /etc/ssh/sshd_config
+RUN ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 ADD sudoers /etc/sudoers.d/naitik
-
-RUN locale-gen
-RUN ssh-keygen -A
-RUN ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 RUN groupadd --gid 1666 naitik
 RUN useradd \
       --comment "Naitik Shah" \
@@ -75,5 +72,7 @@ RUN useradd \
 RUN echo "naitik:$(tr -dc A-Za-z0-9_ < /dev/urandom | head -c16)" | chpasswd
 VOLUME /home/naitik
 
+ADD sshd_config /etc/ssh/sshd_config
+RUN ssh-keygen -A
 EXPOSE 22 61001/udp
 CMD ["/usr/sbin/sshd", "-D"]
