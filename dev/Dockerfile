@@ -38,6 +38,7 @@ RUN apt-get install \
       openssh-client \
       openssh-server \
       patch \
+      python \
       rsync \
       sudo \
       tmux \
