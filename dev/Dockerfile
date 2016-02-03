@@ -72,5 +72,5 @@ RUN echo "naitik:$(tr -dc A-Za-z0-9_ < /dev/urandom | head -c16)" | chpasswd
 VOLUME /home/naitik
 
 ADD sshd_config /etc/ssh/sshd_config
-EXPOSE 22 61001/udp
+EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
