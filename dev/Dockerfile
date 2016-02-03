@@ -24,6 +24,7 @@ RUN apt-get install \
       cmake \
       curl \
       docker-engine \
+      fakeroot \
       g++ \
       gawk \
       gcc \
