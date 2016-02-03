@@ -40,6 +40,7 @@ RUN apt-get install \
       patch \
       pkg-config \
       python \
+      python-pip \
       rsync \
       sudo \
       tmux \
