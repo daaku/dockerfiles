@@ -30,6 +30,7 @@ RUN apt-get install \
       git \
       htop \
       less \
+      libpython-dev \
       libtool \
       make \
       man-db \
