@@ -8,6 +8,7 @@ TODO:
 - vim plugins
 - go
 - docker ps config
+- better authorized keys process
 
 ```sh
 docker build -t daaku/dev .

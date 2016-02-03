@@ -32,6 +32,7 @@ RUN apt-get install \
       gawk \
       gcc \
       git \
+      htop \
       less \
       libtool \
       make \
@@ -41,6 +42,7 @@ RUN apt-get install \
       patch \
       rsync \
       sudo \
+      tmux \
       vim \
       zip \
       zsh
