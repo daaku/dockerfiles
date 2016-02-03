@@ -40,6 +40,7 @@ RUN apt-get install \
       rsync \
       sudo \
       tmux \
+      unzip \
       vim \
       zip \
       zsh
