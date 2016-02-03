@@ -32,12 +32,13 @@ RUN apt-get install \
       htop \
       less \
       libpython-dev \
-      libtool \
+      libtool-bin \
       make \
       man-db \
       openssh-client \
       openssh-server \
       patch \
+      pkg-config \
       python \
       rsync \
       sudo \
