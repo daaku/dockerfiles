@@ -8,7 +8,6 @@ run:
 	  --detach \
 	  --privileged \
 	  --publish=666:22 \
-	  --publish=61001:61001/udp \
 	  --volume=/home/naitik:/home/naitik \
 	  --volume=/run/docker.sock:/run/docker.sock \
 	  --volume=/run/shm:/run/shm \
