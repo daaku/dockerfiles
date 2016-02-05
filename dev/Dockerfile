@@ -49,19 +49,8 @@ RUN apt-get install \
       zip \
       zsh
 
-# install go, doc, vet, golint binaries
-RUN export GOPATH=/tmp/gopath && \
-    mkdir $GOPATH && \
-    cd $GOPATH && \
-    curl https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz | \
-      tar --extract --gunzip --directory $GOPATH && \
-    $GOPATH/godeb install 1.5.3 && \
-    go get \
-      golang.org/x/tools/cmd/godoc \
-      golang.org/x/tools/cmd/vet \
-      github.com/golang/lint/golint && \
-    mv $GOPATH/bin/golint /usr/bin/golint && \
-    rm -rf $GOPATH
+ADD daaku-debs /usr/bin/daaku-debs
+RUN daaku-debs go_1.5.3-godeb1_amd64.deb
 
 RUN ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 ADD sudoers /etc/sudoers.d/naitik

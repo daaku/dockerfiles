@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+shopt -s dotglob nullglob
+trap 'echo "${0} line ${LINENO} Status: ${?}"' ERR
+
+BASE_URL=https://daaku-debs.s3.amazonaws.com
+PACKAGE=$1
+OUTPUT=/tmp/$PACKAGE
+
+curl --silent --output $OUTPUT $BASE_URL/$PACKAGE
+trap "rm -f $OUTPUT" EXIT
+dpkg --install $OUTPUT
