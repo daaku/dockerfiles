@@ -1,4 +1,7 @@
 build:
+	@docker build -t daaku/dev .
+
+rebuild:
 	@docker build --no-cache -t daaku/dev .
 
 run:
