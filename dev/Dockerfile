@@ -30,6 +30,7 @@ RUN apt-get install \
       gcc \
       git \
       htop \
+      jq \
       less \
       libpython-dev \
       libtool-bin \
