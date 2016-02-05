@@ -51,20 +51,11 @@ RUN apt-get install \
 
 ADD daaku-debs /usr/bin/daaku-debs
 RUN daaku-debs go_1.5.3-godeb1_amd64.deb
+RUN daaku-debs user-naitik-1.4.deb
+RUN daaku-debs sudo-naitik-1.0.deb
 
-RUN ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
-ADD sudoers /etc/sudoers.d/naitik
-RUN groupadd --gid 1666 naitik
-RUN useradd \
-      --comment "Naitik Shah" \
-      --gid naitik \
-      --groups users \
-      --shell /usr/bin/zsh \
-      --uid 1666 \
-      naitik
 RUN echo "naitik:$(tr -dc A-Za-z0-9_ < /dev/urandom | head -c16)" | chpasswd
 VOLUME /home/naitik
-
 ADD sshd_config /etc/ssh/sshd_config
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
