@@ -23,7 +23,7 @@ RUN apt-get install \
       ca-certificates \
       cmake \
       curl \
-      docker-engine \
+      docker-engine=1.9.1-0~wily \
       fakeroot \
       g++ \
       gawk \

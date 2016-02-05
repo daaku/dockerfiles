@@ -5,7 +5,6 @@ My personal development container.
 
 TODO:
 - neovim
-- go
 - user-naitik
 - vim plugins
 - go binaries
