@@ -46,7 +46,6 @@ RUN apt-get install \
       sudo \
       tmux \
       unzip \
-      vim \
       zip \
       zsh
 
@@ -54,6 +53,7 @@ ADD daaku-debs /usr/bin/daaku-debs
 RUN daaku-debs go_1.5.3-godeb1_amd64.deb
 RUN daaku-debs user-naitik-1.4.deb
 RUN daaku-debs sudo-naitik-1.0.deb
+RUN daaku-debs neovim-2016.02.05.deb
 
 RUN echo "naitik:$(tr -dc A-Za-z0-9_ < /dev/urandom | head -c16)" | chpasswd
 VOLUME /home/naitik
