@@ -5,10 +5,6 @@ ADD apt.conf /etc/apt/apt.conf.d/dev.conf
 RUN echo "debconf debconf/frontend select noninteractive\n \
           debconf debconf/priority select critical" | debconf-set-selections
 
-RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D # docker key
-RUN apt-get update
-RUN apt-get install locales
-
 # locale
 ADD locale.gen /etc/locale.gen
 RUN locale-gen en_US.UTF-8
@@ -16,6 +12,9 @@ RUN update-locale LANG=en_US.UTF-8
 ENV LANG=en_US.UTF-8 \
     LC_COLLATE=C
 
+RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D # docker key
+
+RUN apt-get update
 RUN apt-get install \
       autoconf \
       automake \
