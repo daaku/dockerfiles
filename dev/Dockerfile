@@ -50,7 +50,7 @@ RUN apt-get install \
       zsh
 
 ADD daaku-debs /usr/bin/daaku-debs
-RUN daaku-debs go_1.5.3-godeb1_amd64.deb
+RUN daaku-debs go_1.6-godeb1_amd64.deb
 RUN daaku-debs user-naitik-1.4.deb
 RUN daaku-debs sudo-naitik-1.0.deb
 RUN daaku-debs neovim-2016.02.05.deb
