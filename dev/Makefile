@@ -2,6 +2,7 @@ build:
 	@docker build -t daaku/dev .
 
 rebuild:
+	@docker pull ubuntu:15.10
 	@docker build --no-cache -t daaku/dev .
 
 create-home-volume:
