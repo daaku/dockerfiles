@@ -1,4 +1,4 @@
-FROM ubuntu:15.10
+FROM ubuntu:16.04
 
 ADD sources.list /etc/apt/sources.list
 ADD apt.conf /etc/apt/apt.conf.d/dev.conf
