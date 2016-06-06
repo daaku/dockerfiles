@@ -4,13 +4,6 @@ build:
 rebuild:
 	@docker build --no-cache -t daaku/dev .
 
-create-home-volume:
-	@docker create \
-	  --volume=/home/naitik \
-	  --name=naitik-home \
-	  ubuntu:15.10 \
-	  /bin/true
-
 run:
 	@docker run \
 	  --name=naitik-dev \
@@ -18,7 +11,7 @@ run:
 	  --detach \
 	  --privileged \
 	  --publish=666:22 \
-	  --volumes-from=naitik-home \
+	  --volume=/Users/naitik/workspace/dev:/home/naitik \
 	  --volume=/run/docker.sock:/run/docker.sock \
 	  daaku/dev
 
