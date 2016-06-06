@@ -13,7 +13,7 @@ run:
 	  --privileged \
 	  --publish=666:22 \
 	  --volume=/Users/naitik/workspace/dev:/home/naitik \
-	  --volume=/run/docker.sock:/run/docker.sock \
+	  --volume=/var/run/docker.sock:/run/docker.sock \
 	  daaku/dev
 
 rmf:
