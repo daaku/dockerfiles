@@ -2,6 +2,7 @@ build:
 	@docker build -t daaku/dev .
 
 rebuild:
+	@docker pull ubuntu:16.04
 	@docker build --no-cache -t daaku/dev .
 
 run:

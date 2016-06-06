@@ -1,4 +1,4 @@
-deb http://mirror.us.leaseweb.net/ubuntu/ wily          main restricted universe multiverse
-deb http://mirror.us.leaseweb.net/ubuntu/ wily-updates  main restricted universe multiverse
-deb http://mirror.us.leaseweb.net/ubuntu/ wily-security main restricted universe multiverse
-deb http://apt.dockerproject.org/repo     ubuntu-wily   main
+deb http://mirror.us.leaseweb.net/ubuntu/ xenial          main restricted universe multiverse
+deb http://mirror.us.leaseweb.net/ubuntu/ xenial-updates  main restricted universe multiverse
+deb http://mirror.us.leaseweb.net/ubuntu/ xenial-security main restricted universe multiverse
+deb http://apt.dockerproject.org/repo     ubuntu-wily     main
